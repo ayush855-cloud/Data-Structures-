@@ -353,7 +353,7 @@ int main()
          case 8:
             exit(1);
          default:
-            cout<<"Wrong choice"<<endl;
+            cout<<"Invalid choice,try again"<<endl;
       }
    }
 }
