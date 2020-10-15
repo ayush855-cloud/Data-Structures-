@@ -1,34 +1,34 @@
 # include <iostream>
 # include <cstdlib>
 using namespace std;
-struct nod//node declaration
+struct node //node declaration
 {
    int info;
-   struct nod *l;
-   struct nod *r;
+   struct node *l;
+   struct node *r;
 }*r;
 class BST
 {
    public://functions declaration
-   void search(nod *, int);
-   void find(int, nod **, nod **);
-   void insert(nod *, nod *);
+   void search(node *, int);
+   void find(int, node **, node **);
+   void insert(node *, node *);
    void del(int);
-   void casea(nod *,nod *);
-   void caseb(nod *,nod *);
-   void casec(nod *,nod *);
-   void preorder(nod *);
-   void inorder(nod *);
-   void postorder(nod *);
-   void show(nod *, int);
+   void casea(node *,node *);
+   void caseb(node *,node *);
+   void casec(node *,node *);
+   void preorder(node *);
+   void inorder(node *);
+   void postorder(node *);
+   void show(node *, int);
    BST()
    {
       r = NULL;
    }
 };
-void BST::find(int i, nod **par, nod **loc)//find the position of the item
+void BST::find(int i, node **par, node **loc)//find the position of the item
 {
-   nod *ptr, *ptrsave;
+   node *ptr, *ptrsave;
    if (r == NULL)
    {
       *loc = NULL;
@@ -63,7 +63,7 @@ void BST::find(int i, nod **par, nod **loc)//find the position of the item
    *loc = NULL;
    *par = ptrsave;
 }
-void BST::search(nod *root, int data) //searching
+void BST::search(node *root, int data) //searching
 {
    int depth = 0;
    nod *temp = new nod;
@@ -84,11 +84,11 @@ void BST::search(nod *root, int data) //searching
    cout<<"\n Data not found"<<endl;
    return;
 }
-void BST::insert(nod *tree, nod *newnode)
+void BST::insert(node *tree, node *newnode)
 {
    if (r == NULL)
    {
-      r = new nod;
+      r = new node;
       r→info = newnode→info;
       r→l= NULL;
       r→r= NULL;
@@ -167,7 +167,7 @@ void BST::del(int i)
    }
    free(loc);
 }
-void BST::casea(nod *par, nod *loc )
+void BST::casea(node *par, node *loc )
 {
    if (par == NULL)
 {
@@ -181,7 +181,7 @@ else
    par→r = NULL;
    }
 }
-void BST::caseb(nod *par, nod *loc)
+void BST::caseb(node *par, node *loc)
 {
    nod *child;
    if (loc→l!= NULL)
@@ -200,9 +200,9 @@ void BST::caseb(nod *par, nod *loc)
          par→r = child;
    }
 }
-void BST::casec(nod *par, nod *loc)
+void BST::casec(node *par, node *loc)
 {
-   nod *ptr, *ptrsave, *suc, *parsuc;
+   node *ptr, *ptrsave, *suc, *parsuc;
    ptrsave = loc;
    ptr = loc→r;
    while (ptr→l!= NULL)
@@ -230,7 +230,7 @@ void BST::casec(nod *par, nod *loc)
    suc→l = loc→l;
    suc→r= loc→r;
 }
-void BST::preorder(nod *ptr)
+void BST::preorder(node *ptr)
 {
    if (r == NULL)
    {
@@ -244,7 +244,7 @@ void BST::preorder(nod *ptr)
       preorder(ptr→r);
    }
 }
-void BST::inorder(nod *ptr)//inorder traversal
+void BST::inorder(node *ptr)//inorder traversal
 {
    if (r == NULL)
    {
@@ -258,7 +258,7 @@ void BST::inorder(nod *ptr)//inorder traversal
       inorder(ptr→r);
    }
 }
-void BST::postorder(nod *ptr)//postorder traversal
+void BST::postorder(node *ptr)//postorder traversal
 {
    if (r == NULL)
    {
@@ -272,7 +272,7 @@ void BST::postorder(nod *ptr)//postorder traversal
       cout<<ptr→info<<" ";
    }
 }
-void BST::show(nod *ptr, int level)//print the tree
+void BST::show(node *ptr, int level)//print the tree
 {
    int i;
    if (ptr != NULL)
@@ -294,7 +294,7 @@ int main()
 {
    int c, n,item;
    BST bst;
-   nod *t;
+   node *t;
    while (1)
    {
       cout<<"1.Insert Element "<<endl;
@@ -310,7 +310,7 @@ int main()
       switch(c)
       {
          case 1:
-            t = new nod;
+            t = new node;
             cout<<"Enter the number to be inserted : ";
             cin>>t→info;
             bst.insert(r, t);
